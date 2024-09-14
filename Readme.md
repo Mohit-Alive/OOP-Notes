@@ -308,7 +308,7 @@ int main(){
 * Used to perform similar operations with different input types.
 * Helps in implementing polymorphism at compile-time.
 
-```cpp
+```js
 //Function Overloading
 
 int area(int side){
@@ -327,7 +327,7 @@ int area(int length, int width, int height){
 * Reduces code duplication by centralizing object construction logic.
 * The constructor called depends on the number and types of arguments provided when creating the object.
 
-``` cpp
+``` js
 // Constructor Overloading
 
 class Area{
@@ -359,7 +359,7 @@ class Area{
 * Unary Operators: These operators (e.g., ++, --, -, !) can be overloaded to work with single objects.
 * Binary Operators: Operators like +, -, *, = can be overloaded to perform operations between two objects.
 
-```cpp
+```js
 // Syntax of Unary Operator Overloading
 class ClassName {
 public:
@@ -377,7 +377,7 @@ public:
 };
 ```
 
-```cpp
+```js
 // Syntax of Binary Operator Overloading
 class ClassName {
 public:
@@ -397,7 +397,7 @@ public:
 };
 ```
 
-```cpp
+```js
 // Syntax of << >> Operator Overloading
 class ClassName {
     int value;
@@ -418,7 +418,7 @@ public:
 };
 ```
 
-``` cpp
+``` js
 // Example of Unary , Binary and << >> Overloading
 
 #include <iostream>
