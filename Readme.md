@@ -359,7 +359,68 @@ class Area{
 * Unary Operators: These operators (e.g., ++, --, -, !) can be overloaded to work with single objects.
 * Binary Operators: Operators like +, -, *, = can be overloaded to perform operations between two objects.
 
+```cpp
+// Syntax of Unary Operator Overloading
+class ClassName {
+public:
+    // Overloading unary operator `++`
+    ClassName operator++() {
+        // Implementation
+        return *this; // return the modified object
+    }
+
+    // Overloading unary operator `++` (postfix)
+    ClassName operator++(int) {
+        // Implementation
+        return *this; // return the original object before modification
+    }
+};
+```
+
+```cpp
+// Syntax of Binary Operator Overloading
+class ClassName {
+public:
+    // Overloading binary operator `+`
+    ClassName operator+(const ClassName& obj) const {
+        // Implementation
+        return *this; // return the result of addition
+    }
+
+    // Overloading binary operator `-`
+    ClassName operator-(const ClassName& obj) const {
+        // Implementation
+        return *this; // return the result of subtraction
+    }
+
+    // Other binary operators can be overloaded similarly
+};
+```
+
+```cpp
+// Syntax of << >> Operator Overloading
+class ClassName {
+    int value;
+public:
+    ClassName(int v) : value(v) {}
+
+    // Friend function for overloading binary operator `<<`
+    friend ostream& operator<<(ostream& out, const ClassName& obj) {
+        out << obj.value;
+        return out;
+    }
+
+    // Friend function for overloading binary operator `>>`
+    friend istream& operator>>(istream& in, ClassName& obj) {
+        in >> obj.value;
+        return in;
+    }
+};
+```
+
 ``` cpp
+// Example of Unary , Binary and << >> Overloading
+
 #include <iostream>
 using namespace std;
 
@@ -403,5 +464,4 @@ int main() {
 
     return 0;
 }
-
 ```
