@@ -1,5 +1,14 @@
 # OOPS Notes
 
+## Index
+
+1. [Unit–2: Classes and Objects](#initializing-class-objects-with-constructors)
+2. [Unit-3: Polymorphism](#unit-3-polymorphism)
+
+<br><br><br>
+
+# Unit–2: Classes and Objects
+
 ## Initializing Class Objects with Constructors
 * A constructor is a special method that initializes an object when it's created.
 * It has the same name as the class and no return type.
@@ -275,3 +284,124 @@ int main(){
 * Used for lazy initialization, controlling access to expensive resources.
 * Often used in network connections or file access.
 * Provides a level of abstraction and control over object creation and access.
+<br><br><br>
+
+# Unit-3: Polymorphism
+
+## Concept of Polymorphism
+
+* Polymorphism allows objects of different classes to be treated as objects of a common base class.
+* It is primarily achieved through function overriding and inheritance.
+* Polymorphism enables a single function or operator to operate in different contexts.
+* It can be static (compile-time) or dynamic (runtime) polymorphism.
+* Promotes code flexibility and reuse.
+
+## Compile-time and Runtime Overloading
+* Compile-time overloading (static polymorphism) happens through function overloading and is determined at compile time, whereas runtime overloading (dynamic polymorphism) uses virtual functions and is determined at runtime.
+* Compile-time overloading is faster since the function is resolved during compilation, while runtime overloading provides more flexibility but can have a slight performance overhead due to runtime decision-making.
+
+## Function Overloading
+
+* Function overloading allows multiple functions with the same name but different parameters.
+* The compiler differentiates functions by the number or type of arguments.
+* It provides readability by using meaningful function names.
+* Used to perform similar operations with different input types.
+* Helps in implementing polymorphism at compile-time.
+
+```cpp
+//Function Overloading
+
+int area(int side){
+}
+int area(int length, int width){
+}
+int area(int length, int width, int height){
+}
+```
+
+## Constructor Overloading
+
+* Multiple constructors can be defined in a class with different parameter lists.
+* Each constructor performs different initialization based on the arguments passed.
+* Allows flexibility in creating objects with various initialization setups.
+* Reduces code duplication by centralizing object construction logic.
+* The constructor called depends on the number and types of arguments provided when creating the object.
+
+```cpp
+// Constructor Overloading
+
+class Area{
+    Area(){
+    }
+    Area(int side){
+    }
+    Area(int length, int width){
+    }
+};
+```
+## Operator Overloading
+
+* Allows operators (like +, -, *, etc.) to be overloaded to work with user-defined types (e.g., classes).
+* Provides the ability to define custom behavior for operators when applied to objects.
+* Ensures operators are intuitive for class instances, improving code readability.
+* Overloading maintains consistency with built-in types for user-defined types.
+* Can be used to overload both unary (e.g., ++) and binary operators (e.g., +).
+
+### Restrictions on Operator Overloading
+
+* Not all operators can be overloaded (e.g., ::, .?, sizeof, typeid).
+* Precedence and associativity of operators cannot be changed.
+* New operators cannot be created; only existing ones can be overloaded.
+* Operators must maintain the expected behavior, especially for built-in types.
+
+### Overloading Operators: <<, >>, Unary Operators, Binary Operators
+* << and >>: Overloaded to perform input/output operations on user-defined objects (like cout and cin).
+* Unary Operators: These operators (e.g., ++, --, -, !) can be overloaded to work with single objects.
+* Binary Operators: Operators like +, -, *, = can be overloaded to perform operations between two objects.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Complex {
+    double real, imag;
+public:
+    // Constructor
+    Complex(int r, int i){
+        real = r;
+        imag = i;
+    }
+
+    // Overloading binary operator `+`
+    Complex operator+(const Complex& other) const {
+        return Complex(real + other.real, imag + other.imag);
+    }
+
+    // Overloading unary operator `-`
+    Complex operator-() const {
+        return Complex(-real, -imag);
+    }
+
+    // Overloading binary operator `<<` for output
+    friend ostream& operator<<(ostream& out, const Complex& c) {
+        out << c.real << " + " << c.imag << "i";
+        return out;
+    }
+};
+
+int main() {
+    Complex c1(3.0, 2.0);
+    Complex c2(1.0, 7.0);
+    
+    Complex c3 = c1 + c2;    // Uses overloaded `+` operator
+    Complex c4 = -c1;        // Uses overloaded `-` operator
+
+    cout << "c1: " << c1 << endl;  // Uses overloaded `<<` operator
+    cout << "c2: " << c2 << endl;  // Uses overloaded `<<` operator
+    cout << "c3: " << c3 << endl;  // Uses overloaded `<<` operator
+    cout << "c4: " << c4 << endl;  // Uses overloaded `<<` operator
+
+    return 0;
+}
+
+```
