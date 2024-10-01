@@ -20,7 +20,7 @@ public:
 int main() {
     inverse c1(2);
 
-    inverse c2 = -c1;        // Uses overloaded `-` operator
+    inverse c2 = -c1;        
     cout<<"c1: " << c1; 
     cout<<"c2: " << c2; 
 
